@@ -1,47 +1,54 @@
-import React, { PureComponent } from 'react'
-import { View, StyleSheet } from 'react-native'
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'
-import { ChatMenu, ContactScreen } from './'
+import React from 'react'
+import {Platform, StatusBar} from 'react-native'
+import {StackNavigator, TabNavigator} from 'react-navigation'
+import {ChatMenu, ContactScreen} from './'
+import {Header, SearchBar} from 'react-native-elements'
 
-const styles = StyleSheet.create({
-    container: {
-      marginTop : 20,
-      flex: 1,
-    },
+
+
+export default CommunicationPage = StackNavigator({
+  MyTab: {
+    screen: TabNavigator({
+        Home: {
+          screen: ChatMenu,
+        },
+        Notifications: {
+          screen: ContactScreen,
+        },
+      }, {
+        tabBarPosition: 'top',
+        animationEnabled: true,
+        tabBarOptions: {
+          style: {
+            backgroundColor: 'green',
+          }
+        }
+      }),
+      navigationOptions: { 
+
+        headerStyle: {
+          backgroundColor : 'green'
+        },
+        headerTitle: 
+        <SearchBar
+          containerStyle = {{
+            marginLeft : 10,
+            marginRight : 10,
+            backgroundColor : "green", 
+            alignSelf: 'stretch',
+          }}
+          inputStyle = {{ backgroundColor : "green", fontSize : 17}}
+          lightTheme
+          round
+          onChangeText={() => console.log("text changed")}
+          placeholder='Search' />
+        }
+  }
+},
+{
+  cardStyle : {
+    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+  }
 })
 
-const FirstRoute = () => <ChatMenu/>
-const SecondRoute = () => <ContactScreen/>
-
-export default class CommuncationPage extends PureComponent {
-  state = {
-    index: 0,
-    routes: [
-      { key: '1', title: 'Messages' },
-      { key: '2', title: 'Contacts' },
-    ],
-  };
-
-  _handleIndexChange = index => this.setState({ index });
-
-  _renderHeader = props => <TabBar {...props} />;
-
-  _renderScene = SceneMap({
-    '1': FirstRoute,
-    '2': SecondRoute,
-  });
-
-  render() {
-    return (
-    
-      <TabViewAnimated
-        style={styles.container}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onIndexChange={this._handleIndexChange}
-      />
-    );
-  }
-}
 

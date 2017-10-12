@@ -56,6 +56,11 @@ const list = [
   ]
 
 export default class ChatMenu extends Component {
+    static navigationOptions = {
+        tabBarLabel: 'Conversations',
+        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+        
+    }
     render(){
         const items = testList.map( (ele, index) => (
             <ListItem 
