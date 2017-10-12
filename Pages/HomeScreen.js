@@ -1,6 +1,7 @@
 import React from 'react'
 import MapView from 'react-native-maps';
-import { AppRegistry, Text, View, StyleSheet, Image, Alert, Button, TouchableHighlight, AsyncStorage, } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { ActionsMenu } from '../Components'
 
 
 const viewStyle = StyleSheet.create({
@@ -16,9 +17,6 @@ const viewStyle = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-  },
-  mapContainer : {
-    flex : 1
   }
 })
 
@@ -26,11 +24,18 @@ export default class HomeScreen extends React.Component {
   render(){
     return(
       <View style = {viewStyle.slide1}>
-        <View style = {viewStyle.mapContainer}>
-          <MapView style = {viewStyle.map}/>
-        </View>
+        <MapView 
+          style = {viewStyle.map}
+          initialRegion={{
+            latitude: 13.729869,
+            longitude: 100.775333,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+        <ActionsMenu/>
+
         
-        <Text> test </Text>
       </View>
     )
   }
