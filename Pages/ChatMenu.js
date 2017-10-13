@@ -3,14 +3,19 @@ import { StyleSheet, Image, Text, View, FlatList } from 'react-native'
 import { List, ListItem, Avatar } from "react-native-elements"
 
 
-const testList = [
-    {
-        header : "ShubU"
-    },
-    {
-        header : "Hehe"
-    }
-]
+
+/*
+    List object schema
+    [
+        {
+            id : int,
+            name : String,
+            avatar_url : String,
+            subtitle : String
+        }
+    ]
+
+*/
 
 const styles = StyleSheet.create({
     subtitleView : {
@@ -57,29 +62,16 @@ const list = [
 
 export default class ChatMenu extends Component {
     static navigationOptions = {
-        tabBarLabel: 'Conversations',
-        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-        
+        tabBarLabel: 'Conversations'
     }
     render(){
-        const items = testList.map( (ele, index) => (
-            <ListItem 
-            key = {index}
-            avatar = {"../Assets/images/avatar.png"}
-            title = {ele.header}
-            subtitle = {
-                <View style = {styles.subtitleView}>
-                    <Text style = {styles.subtitle}> Test subtitles </Text>
-                </View>
-            }/>
-        ))
-
         return(
             <View>
-                <List containerStyle={{marginBottom: 20}}>
+                <List containerStyle={{marginTop: 0,marginBottom: 20}}>
                     {
                         list.map((l, i) => (
-                        <ListItem wrapperStyle= {{marginLeft : 20}}
+                        <ListItem wrapperStyle= {{marginTop:10, marginBottom: 10,marginLeft : 20}}
+                            onPress = { () => this.props.navigation.navigate('Chat', { id : '0'}) }
                             roundAvatar
                             avatar= {<Avatar
                                 rounded
