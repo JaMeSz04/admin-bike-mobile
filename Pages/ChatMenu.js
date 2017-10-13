@@ -71,7 +71,7 @@ export default class ChatMenu extends Component {
                     {
                         list.map((l, i) => (
                         <ListItem wrapperStyle= {{marginTop:10, marginBottom: 10,marginLeft : 20}}
-                            onPress = { () => this.props.navigation.navigate('Chat', { id : '0'}) }
+                            onPress = { () => this.props.navigation.navigate('Chat', { name: l.name, id : '0'}) }
                             roundAvatar
                             avatar= {<Avatar
                                 rounded
@@ -81,7 +81,7 @@ export default class ChatMenu extends Component {
                             key={i}
                             title={l.name}
                             subtitle={l.subtitle}
-                            badge={{ value: 3, containerStyle: { marginTop: 6,  backgroundColor: 'green' } }}
+                            badge={{ value: 3, containerStyle: { marginTop: 5,  backgroundColor: "#33691E" } }}
                         />
                         ))
                     }
