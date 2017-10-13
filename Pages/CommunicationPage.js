@@ -1,9 +1,11 @@
 import React from 'react'
-import { Platform, StatusBar} from 'react-native'
+import { Platform, StatusBar,Text} from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { ChatMenu, ContactScreen } from './'
 import ChatPanel from './ChatPanel'
+import Profile from './Profile'
 import { Header, SearchBar } from 'react-native-elements'
+import { ProfileHeader } from '../Components'
 
 const Color = {
   old : {
@@ -15,6 +17,8 @@ const Color = {
 }
 
 export default CommunicationPage = StackNavigator({
+
+  
   
   MyTab: {
     screen: TabNavigator({
@@ -30,13 +34,14 @@ export default CommunicationPage = StackNavigator({
         animationEnabled: true,
         tabBarOptions: {
           style: {
-            backgroundColor: "#7CB342"
+            backgroundColor: "#009688"
           }
         }
     }),
     navigationOptions: {
       headerStyle: {
-        backgroundColor: "#7CB342"
+        backgroundColor: "#009688",
+        shadowColor: 'transparent'
       },
       headerTitle:
       <SearchBar
@@ -45,10 +50,13 @@ export default CommunicationPage = StackNavigator({
           marginRight: 10,
           marginTop : 10,
           marginBottom : 10,
-          backgroundColor: "#7CB342",
+          backgroundColor: "#009688",
           alignSelf: 'stretch',
+          
         }}
-        inputStyle={{ backgroundColor:"#AED581" , fontSize: 17 }}
+        inputStyle={{ backgroundColor:"#26A69A" , fontSize: 17}}
+        icon = {{color: '#BDBDBD', name : 'search'}}
+        placeholderTextColor = '#BDBDBD'
         lightTheme
         round
         onChangeText={() => console.log("text changed")}
@@ -61,13 +69,20 @@ export default CommunicationPage = StackNavigator({
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.name}`,
       headerStyle: {
-        backgroundColor: '#7CB342',
+        backgroundColor: '#009688',
       },
       headerTitleStyle: {
         color : "white",
         fontWeight: "normal"
       },
       headerTintColor : "white"
+    })
+  },
+  Profile : {
+    path : 'Profile/:id',
+    screen : Profile,
+    navigationOptions: ({navigation}) => ({
+      header : null
     })
   },
 },

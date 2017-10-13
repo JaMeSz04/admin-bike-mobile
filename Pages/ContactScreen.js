@@ -28,6 +28,7 @@ export default class ContactScreen extends React.Component {
                 {
                     data.map((l, i) => (
                     <ListItem wrapperStyle= {{marginTop:3, marginBottom: 3,marginLeft : 20}}
+                        onPress = { () => this.props.navigation.navigate('Profile', { name: l.name, id : '0', phone : "0847060344"}) }
                         roundAvatar
                         key={i}
                         title={l.name}
