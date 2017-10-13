@@ -70,7 +70,7 @@ export default class ChatMenu extends Component {
                 <List containerStyle={{marginTop: 0,marginBottom: 20}}>
                     {
                         list.map((l, i) => (
-                        <ListItem wrapperStyle= {{marginTop:10, marginBottom: 10,marginLeft : 20}}
+                        <ListItem wrapperStyle= {{marginTop:5, marginBottom: 5,marginLeft : 20}}
                             onPress = { () => this.props.navigation.navigate('Chat', { name: l.name, id : '0'}) }
                             roundAvatar
                             avatar= {<Avatar
