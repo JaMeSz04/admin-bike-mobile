@@ -80,8 +80,9 @@ export default class ChatMenu extends Component {
                             />}
                             key={i}
                             title={l.name}
+                            titleStyle={{fontWeight: "bold"}}
                             subtitle={l.subtitle}
-                            badge={{ value: 3, containerStyle: { marginTop: 5,  backgroundColor: "#33691E" } }}
+                            badge={{ value: 3, containerStyle: { marginTop: 5,  backgroundColor: "#D50000" } }}
                         />
                         ))
                     }
