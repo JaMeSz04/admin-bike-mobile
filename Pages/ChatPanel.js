@@ -10,6 +10,7 @@ const Styles = StyleSheet.create({
 })
 
 export default class ChatPanel extends React.Component {
+    
     constructor(props) {
         super(props)
         this.state = {

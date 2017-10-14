@@ -1,10 +1,10 @@
 import React from 'react'
-import { Platform, StatusBar,Text} from 'react-native'
+import { View, Platform, StatusBar,Text} from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { ChatMenu, ContactScreen } from './'
 import ChatPanel from './ChatPanel'
 import Profile from './Profile'
-import { Header, SearchBar } from 'react-native-elements'
+import { Header, SearchBar, Icon } from 'react-native-elements'
 import { ProfileHeader } from '../Components'
 
 const Color = {
@@ -16,32 +16,33 @@ const Color = {
   
 }
 
+const CommunicationTab = TabNavigator({
+  Conversations: {
+    screen: ChatMenu,
+  },
+  Contacts: {
+    screen: ContactScreen,
+  },
+  
+}, {
+    tabBarPosition: 'top',
+    
+    tabBarOptions: {
+      style: {
+        backgroundColor: "#009688"
+      }
+    }
+})
+
 export default CommunicationPage = StackNavigator({
 
-  
-  
   MyTab: {
-    screen: TabNavigator({
-      Conversations: {
-        screen: ChatMenu,
-      },
-      Contacts: {
-        screen: ContactScreen,
-      },
-      
-    }, {
-        tabBarPosition: 'top',
-        animationEnabled: true,
-        tabBarOptions: {
-          style: {
-            backgroundColor: "#009688"
-          }
-        }
-    }),
+    screen:  CommunicationTab,
     navigationOptions: {
       headerStyle: {
         backgroundColor: "#009688",
-        shadowColor: 'transparent'
+        shadowColor: 'transparent',
+        elevation: 0
       },
       headerTitle:
       <SearchBar
@@ -75,7 +76,8 @@ export default CommunicationPage = StackNavigator({
         color : "white",
         fontWeight: "normal"
       },
-      headerTintColor : "white"
+      headerTintColor : "white",
+      headerRight : <Icon name='info-outline' color = '#E0E0E0' containerStyle = {{marginRight:20}} onPress = {() => {navigation.navigate('Profile', { name: navigation.state.params.name, id : '0', phone : "0847060344"}) }}/>
     })
   },
   Profile : {
@@ -90,6 +92,6 @@ export default CommunicationPage = StackNavigator({
     cardStyle: {
       paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
   }
-  })
+})
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { HomeScreen, CommunicationPage } from './Pages'
 import Swiper from 'react-native-swiper';
+import Routes from './Router'
 
 var styles = StyleSheet.create({
   wrapper: {
@@ -40,8 +41,7 @@ const renderPagination = (index, total, context) => {
 export default class App extends React.Component {
   render() {
     return (
-      
-      <CommunicationPage/>
+      <Routes/>
     )
   }
 }
