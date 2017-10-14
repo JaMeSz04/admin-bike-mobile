@@ -3,7 +3,10 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import { HomeScreen, ChatPanel, Profile, HistoryPage} from '../Pages'
 import {CommunicationRoute} from './'
 import { Icon, SearchBar } from 'react-native-elements'
-import {Platform, StatusBar} from 'react-native'
+import {View, Text,Platform, StatusBar} from 'react-native'
+
+
+
 
 const Routes = StackNavigator({
   
@@ -16,7 +19,6 @@ const Routes = StackNavigator({
             <Icon color={tintColor} name='place'/>
           ),
           header : null
-          
         }
       },
       History: {
@@ -25,8 +27,13 @@ const Routes = StackNavigator({
           tabBarIcon: ({ tintColor }) => (
             <Icon color={tintColor} name='event-note'/>
           ),
-          header : null
-          
+          title : "History",
+          headerStyle: {
+            backgroundColor: "#009688",
+          },
+          headerTitleStyle : {
+            color : "white"
+          }
         }
       },
       Communication: {
