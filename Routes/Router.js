@@ -1,6 +1,6 @@
 import React from 'react'
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import { HomeScreen, ChatPanel, Profile } from '../Pages'
+import { HomeScreen, ChatPanel, Profile, HistoryPage} from '../Pages'
 import {CommunicationRoute} from './'
 import { Icon, SearchBar } from 'react-native-elements'
 import {Platform, StatusBar} from 'react-native'
@@ -14,6 +14,16 @@ const Routes = StackNavigator({
         navigationOptions: {
           tabBarIcon: ({ tintColor }) => (
             <Icon color={tintColor} name='place'/>
+          ),
+          header : null
+          
+        }
+      },
+      History: {
+        screen: HistoryPage,
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) => (
+            <Icon color={tintColor} name='event-note'/>
           ),
           header : null
           
@@ -46,7 +56,7 @@ const Routes = StackNavigator({
             onChangeText={() => console.log("text changed")}
             placeholder='Search' />,
           tabBarIcon: ({ tintColor }) => (
-            <Icon color={tintColor} name='feedback'/>
+            <Icon color={tintColor} name='question-answer'/>
           ),
           
         }

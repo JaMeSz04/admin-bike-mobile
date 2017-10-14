@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { ScrollView, View, Text, StyleSheet } from 'react-native'
 import { Icon, Avatar, Button, List, ListItem } from 'react-native-elements'
 
 
@@ -37,7 +37,7 @@ export default class Profile extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <ScrollView style={{ flex: 1 }}>
                 <View style={{ backgroundColor: "#009688", paddingBottom: 30 }}>
                     <Icon size={45} style={{ left: 5, top: 10 }} name='keyboard-arrow-left' color="white" onPress={() => this.props.navigation.goBack()} />
                     <View style={{ flexDirection: "column", alignItems: "center" }}>
@@ -84,7 +84,7 @@ export default class Profile extends Component {
                         }
                     </List>
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
