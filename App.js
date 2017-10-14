@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { HomeScreen, CommunicationPage } from './Pages'
+import { HomeScreen } from './Pages'
 import Swiper from 'react-native-swiper';
-import Routes from './Router'
+import Routes from './Routes/Router'
 
 var styles = StyleSheet.create({
   wrapper: {

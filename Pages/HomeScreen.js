@@ -21,6 +21,7 @@ const viewStyle = StyleSheet.create({
 })
 
 export default class HomeScreen extends React.Component {
+
   render(){
     return(
       <View style = {viewStyle.slide1}>
