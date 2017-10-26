@@ -58,13 +58,7 @@ const Routes = StackNavigator({
           tabBarLabel: ({ focus, tintColor }) => (
             <Icon color={tintColor} name='event-note'/>
           ),
-          title : "History",
-          headerStyle: {
-            backgroundColor: "#009688",
-          },
-          headerTitleStyle : {
-            color : "white"
-          }
+          header : null
         }
       },
       

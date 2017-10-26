@@ -53,7 +53,7 @@ export default class CardChat extends Component {
                 <View style = {{flexDirection: "column"}}>
                     <View style = {{ minHeight: 50, marginBottom: 2, flexDirection: "column"}}>
                         <Text style = {{ fontSize:18 }}> Patipon Riebpradit </Text>  
-                        <Text style = {styles.lastMessage}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, elit eget viverra sagittis, erat nisi varius quam </Text>
+                        <Text onPress = {() => this.props.action()} style = {styles.lastMessage}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, elit eget viverra sagittis, erat nisi varius quam </Text>
                     </View>
                     <View style = {styles.avatarBox}>
                         <Avatar
@@ -82,8 +82,8 @@ export default class CardChat extends Component {
                         <Text style = {{marginTop: 3, color: "gray"}}> 1 hr </Text>
                     </View>
                     <View style = {{flexDirection: "row"}}>
-                        <Icon color = "gray" name='chat-bubble-outline' />
-                        <Text style = {{marginLeft: 2, marginTop: 3, color: "gray"}}> 8 </Text>
+                        <Icon onPress = {() => this.props.action()} color = "gray" name='chat-bubble-outline' />
+                        <Text onPress = {() => this.props.action()} style = {{marginLeft: 2, marginTop: 3, color: "gray"}}> 8 </Text>
                     </View>
                 </View>
             </Card>
