@@ -1,22 +1,53 @@
 import React from 'react'
 import { DrawerNavigator,TabNavigator, StackNavigator } from 'react-navigation';
+import AccountSetting from '../Pages/AccountSetting'
 import { HomeScreen, ChatPanel, MapSetting, Profile, HistoryPage, ContactScreen, ChatMenu} from '../Pages'
 import {CommunicationRoute} from './'
 import { Icon, SearchBar } from 'react-native-elements'
 import {View, Text,Platform, StatusBar} from 'react-native'
 
-
-
-
 const Routes = StackNavigator({
-  
   Main : {
     screen :TabNavigator({
+      Communication: {
+        screen: ChatMenu,
+        navigationOptions: {
+          headerStyle: {
+            backgroundColor: "#009688",
+            shadowColor: 'transparent',
+            
+          },
+          headerTitle: "Chats",
+          headerTitleStyle : {
+            color : 'white'
+          },
+          tabBarLabel: ({ focus,tintColor }) => (
+            <Icon color={tintColor} name='question-answer'/>
+          ),
+          
+        }
+      },
+      Users: {
+        path: "Users",
+        screen: ContactScreen,
+        navigationOptions: {
+          headerTitle: "Users",
+          tabBarLabel: ({focus,tintColor}) => ( <Icon color={tintColor} name = 'contacts'/> ),
+          headerStyle: {
+            backgroundColor: "#009688"
+          },
+          headerTitleStyle: {
+            color : "white"
+          }
+        }
+      },
+      
+      
       Map: {
         screen: HomeScreen,
         navigationOptions: {
-          tabBarIcon: ({ tintColor }) => (
-            <Icon color={tintColor} name='place'/>
+          tabBarLabel: ({ focused }) => (
+            <Icon containerStyle = {{marginTop: -5, marginBottom: -5}} reverse color={"#009688"} name='place'/>
           ),
           header : null
         }
@@ -24,7 +55,7 @@ const Routes = StackNavigator({
       History: {
         screen: HistoryPage,
         navigationOptions: {
-          tabBarIcon: ({ tintColor }) => (
+          tabBarLabel: ({ focus, tintColor }) => (
             <Icon color={tintColor} name='event-note'/>
           ),
           title : "History",
@@ -37,30 +68,13 @@ const Routes = StackNavigator({
         }
       },
       
-      Communication: {
-        screen: ChatMenu,
+      
+      
+      Settings: {
+        screen: AccountSetting,
         navigationOptions: {
-          headerStyle: {
-            backgroundColor: "#009688",
-            shadowColor: 'transparent',
-            elevation: 0
-          },
-          headerTitle: "Chats",
-          headerTitleStyle : {
-            color : 'white'
-          },
-          tabBarIcon: ({ tintColor }) => (
-            <Icon color={tintColor} name='question-answer'/>
-          ),
-          
-        }
-      },
-      Users: {
-        path: "Users",
-        screen: ContactScreen,
-        navigationOptions: {
-          headerTitle: "Users",
-          tabBarIcon: ({tintColor}) => ( <Icon color={tintColor} name = 'person-outline'/> ),
+          headerTitle: "Settings",
+          tabBarLabel: ({ focus, tintColor}) => ( <Icon color={tintColor} name = 'settings'/> ),
           headerStyle: {
             backgroundColor: "#009688"
           },
@@ -68,7 +82,10 @@ const Routes = StackNavigator({
             color : "white"
           }
         }
-      },
+      }
+      
+      
+      
       
     }, 
     {
@@ -77,12 +94,12 @@ const Routes = StackNavigator({
       swipeEnabled: false,
       lazy: true,
       tabBarOptions: {
-        activeTintColor : "white",
+        activeTintColor : "#009688",
         inactiveTintColor : "#BDBDBD",
-        showIcon : true,
-        showLabel : false,
+        showIcon : false,
+        
         style: {
-          backgroundColor: "#009688"
+          backgroundColor: "white",
         },
         pressOpacity: 0
       }

@@ -32,8 +32,8 @@ const viewStyle = StyleSheet.create({
     shadowRadius: 10,
     position: 'absolute',
     zIndex: 10,
-    right: 20,
-    top: 30
+    right: 16,
+    top: 16
   }
 })
 
