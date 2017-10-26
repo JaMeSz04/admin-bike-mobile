@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, View, Text, StyleSheet } from 'react-native'
 import { Icon, Avatar, Button, List, ListItem } from 'react-native-elements'
+import call from 'react-native-phone-call'
 
 
 const Styles = StyleSheet.create({
@@ -12,20 +13,37 @@ const Styles = StyleSheet.create({
     }
 })
 
+
+const phone =  () => {
+    let test = "084-706-0344"
+    test = test.replace(/-/g, "")
+
+    console.log(test)
+    const arg = {
+        number : test,
+        prompt : true
+    }
+    call(arg)
+}
+
 const list = [
     {
+        name : "id",
         title: "57090016",
         icon: 'perm-identity'
     },
     {
+        name : "phone-number",
         title: '084-706-0344',
         icon: 'local-phone'
     },
     {
+        name : "facalty",
         title: "International College",
         icon: "account-balance"
     },
     {
+        name : "address",
         title: '234/320 Moo.6 Samutprakarn',
         icon: 'map'
     }
@@ -38,7 +56,7 @@ export default class Profile extends Component {
     render() {
         return (
             <ScrollView style={{ flex: 1 }}>
-                <View style={{ backgroundColor: "#009688", paddingBottom: 30 }}>
+                <View style={{ backgroundColor: "#009688", paddingTop:20, paddingBottom: 30 }}>
                     <Icon size={45} style={{ left: 5, top: 10 }} name='keyboard-arrow-left' color="white" onPress={() => this.props.navigation.goBack()} />
                     <View style={{ flexDirection: "column", alignItems: "center" }}>
                         <Avatar
@@ -74,11 +92,12 @@ export default class Profile extends Component {
                                         justifyContent: 'center',
                                     }}
                                     key={i}
+                                    onPress = {() => (item.name == "phone-number"? phone() : console.log(""))}
                                     title={item.title}
-
+                                    hideChevron
                                     titleNumberOfLines={3}
                                     leftIcon={{ name: item.icon, style: { left: 10 } }}
-                                    rightIcon={{ style: { marginRight: 100 } }}
+                                    
                                 />
                             ))
                         }

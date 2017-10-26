@@ -1,7 +1,6 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { ChatMenu, ContactScreen } from '../Pages'
-import { Header, SearchBar, Icon } from 'react-native-elements'
 
 const Color = {
   old : {

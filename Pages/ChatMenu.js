@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { StyleSheet, Image, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Image, Text, ScrollView, FlatList } from 'react-native'
 import { List, ListItem, Avatar } from "react-native-elements"
 
 
@@ -66,11 +66,11 @@ export default class ChatMenu extends Component {
     }
     render(){
         return(
-            <View>
+            <ScrollView>
                 <List containerStyle={{marginTop: 0,marginBottom: 20}}>
                     {
                         list.map((l, i) => (
-                        <ListItem wrapperStyle= {{marginTop:5, marginBottom: 5,marginLeft : 20}}
+                        <ListItem wrapperStyle= {{marginTop:3, marginBottom: 3,marginLeft : 20}}
                             onPress = { () => this.props.navigation.navigate('Chat', { name: l.name, id : '0'}) }
                             roundAvatar
                             avatar= {<Avatar
@@ -87,7 +87,7 @@ export default class ChatMenu extends Component {
                         ))
                     }
                 </List>
-            </View>
+            </ScrollView>
         )
     }
 }

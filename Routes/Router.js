@@ -1,6 +1,6 @@
 import React from 'react'
-import { TabNavigator, StackNavigator } from 'react-navigation';
-import { HomeScreen, ChatPanel, Profile, HistoryPage} from '../Pages'
+import { DrawerNavigator,TabNavigator, StackNavigator } from 'react-navigation';
+import { HomeScreen, ChatPanel, MapSetting, Profile, HistoryPage, ContactScreen, ChatMenu} from '../Pages'
 import {CommunicationRoute} from './'
 import { Icon, SearchBar } from 'react-native-elements'
 import {View, Text,Platform, StatusBar} from 'react-native'
@@ -36,45 +36,49 @@ const Routes = StackNavigator({
           }
         }
       },
+      
       Communication: {
-        screen: CommunicationRoute,
+        screen: ChatMenu,
         navigationOptions: {
           headerStyle: {
             backgroundColor: "#009688",
             shadowColor: 'transparent',
             elevation: 0
           },
-          headerTitle:
-          <SearchBar
-            containerStyle={{
-              marginLeft: 10,
-              marginRight: 10,
-              marginTop : 10,
-              marginBottom : 10,
-              backgroundColor: "#009688",
-              alignSelf: 'stretch',
-              
-            }}
-            inputStyle={{ backgroundColor:"#26A69A" , fontSize: 17}}
-            icon = {{color: '#BDBDBD', name : 'search'}}
-            placeholderTextColor = '#BDBDBD'
-            lightTheme
-            round
-            onChangeText={() => console.log("text changed")}
-            placeholder='Search' />,
+          headerTitle: "Chats",
+          headerTitleStyle : {
+            color : 'white'
+          },
           tabBarIcon: ({ tintColor }) => (
             <Icon color={tintColor} name='question-answer'/>
           ),
           
         }
       },
+      Users: {
+        path: "Users",
+        screen: ContactScreen,
+        navigationOptions: {
+          headerTitle: "Users",
+          tabBarIcon: ({tintColor}) => ( <Icon color={tintColor} name = 'person-outline'/> ),
+          headerStyle: {
+            backgroundColor: "#009688"
+          },
+          headerTitleStyle: {
+            color : "white"
+          }
+        }
+      },
       
-    }, {
+    }, 
+    {
       tabBarPosition: 'bottom',
       animationEnabled: false,
       swipeEnabled: false,
       lazy: true,
       tabBarOptions: {
+        activeTintColor : "white",
+        inactiveTintColor : "#BDBDBD",
         showIcon : true,
         showLabel : false,
         style: {
@@ -107,7 +111,8 @@ const Routes = StackNavigator({
     navigationOptions: ({navigation}) => ({
       header : null
     })
-  }
+  },
+
   
   
 },{
