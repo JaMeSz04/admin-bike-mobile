@@ -6,3 +6,4 @@ export {default as Profile} from './Profile';
 export {default as HistoryPage} from './HistoryPage';
 export {default as MapSetting} from './MapSetting';
 export {default as AccountSetting} from './AccountSetting';
+export {default as AuthenPage} from './AuthenPage';

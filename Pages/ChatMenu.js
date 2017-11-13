@@ -54,9 +54,9 @@ export default class ChatMenu extends Component {
                 }
 
             >
-                <CardChat action = {() => this.props.navigation.navigate('Chat', { id : 0 })} />
-                <CardChat action = {() => this.props.navigation.navigate('Chat', { id : 0 })} />
-                <CardChat action = {() => this.props.navigation.navigate('Chat', { id : 0 })}/>
+                <CardChat action = {() => this.props.navigation.navigate('Chat', { name : "Patipon Riebpradt", id : 0 })} />
+                <CardChat action = {() => this.props.navigation.navigate('Chat', { name : "Patipon Riebpradt", id : 0 })} />
+                <CardChat action = {() => this.props.navigation.navigate('Chat', { name : "Patipon Riebpradt", id : 0 })}/>
             </ScrollView>
         )
     }

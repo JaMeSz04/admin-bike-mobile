@@ -22,7 +22,7 @@ export default function ActiveToggle({init, action}){
                 onValueChange={(value) => action(value)}
                 value = {init}
                 thumbTintColor="white"
-                onTintColor="#009688" />
+                onTintColor="#009688" /> 
         </View>
     )
 }

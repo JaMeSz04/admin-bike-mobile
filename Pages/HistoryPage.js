@@ -42,7 +42,7 @@ export default class HistoryPage extends Component {
                                     colors={['#00BF9A']}
                                     backgroundColor='#ddd' />
                                 <View style={{position : 'absolute', alignItems: 'center', justifyContent: 'center'}}>
-                                    <Text style = {{marginLeft: 18, marginTop: 14, fontSize: 54, color : "white"}}>18</Text>
+                                    <Text style = {{marginLeft: 20, marginTop: 14, fontSize: 54, color : "white"}}>18</Text>
                                    
                                 </View>
                             </View>

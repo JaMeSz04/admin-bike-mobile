@@ -1,12 +1,19 @@
 import React from 'react'
 import { DrawerNavigator,TabNavigator, StackNavigator } from 'react-navigation';
 import AccountSetting from '../Pages/AccountSetting'
+import AuthenPage from '../Pages/AuthenPage'
 import { HomeScreen, ChatPanel, MapSetting, Profile, HistoryPage, ContactScreen, ChatMenu} from '../Pages'
 import {CommunicationRoute} from './'
 import { Icon, SearchBar } from 'react-native-elements'
 import {View, Text,Platform, StatusBar} from 'react-native'
 
 const Routes = StackNavigator({
+    Login : {
+        screen : AuthenPage,
+        navigationOptions : {
+            header : null
+        }
+    },
   Main : {
     screen :TabNavigator({
       Communication: {
@@ -21,6 +28,7 @@ const Routes = StackNavigator({
           headerTitleStyle : {
             color : 'white'
           },
+          headerLeft :null,
           tabBarLabel: ({ focus,tintColor }) => (
             <Icon color={tintColor} name='question-answer'/>
           ),
@@ -38,7 +46,8 @@ const Routes = StackNavigator({
           },
           headerTitleStyle: {
             color : "white"
-          }
+          },
+          headerLeft :null,
         }
       },
       
@@ -58,7 +67,8 @@ const Routes = StackNavigator({
           tabBarLabel: ({ focus, tintColor }) => (
             <Icon color={tintColor} name='event-note'/>
           ),
-          header : null
+          header : null,
+          headerLeft :null,
         }
       },
       
@@ -74,9 +84,13 @@ const Routes = StackNavigator({
           },
           headerTitleStyle: {
             color : "white"
-          }
+          },
+          headerLeft :null,
         }
-      }
+
+      },
+
+
       
       
       
@@ -123,6 +137,10 @@ const Routes = StackNavigator({
       header : null
     })
   },
+
+
+
+  
 
   
   
