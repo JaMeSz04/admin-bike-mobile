@@ -90,11 +90,6 @@ const Routes = StackNavigator({
 
       },
 
-
-      
-      
-      
-      
     }, 
     {
       tabBarPosition: 'bottom',

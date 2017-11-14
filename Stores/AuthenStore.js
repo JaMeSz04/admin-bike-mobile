@@ -18,9 +18,10 @@ class AuthenStore extends TokenStore {
     async login(navigation){
         if (this.isValidAccess())
             navigation.navigate('Map', { username: values.username })
+            return true
         else {
             const status = await this.authenticate()
-            status? navigation.navigate('Map', { username: values.username }) : false
+            return status? navigation.navigate('Map', { username: values.username }) : false
         }
     }
 
