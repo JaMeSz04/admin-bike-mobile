@@ -5,6 +5,7 @@ import service from '../api'
 //assume that getListBike return all bikes (both inactive and active)
 class BikeStore {
     @observable bikeList = []
+    @observable bikeHistory = []
 
     @action fetchBikeList(){
         service.getListBikes().then( response  => {
