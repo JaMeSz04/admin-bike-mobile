@@ -1,28 +1,8 @@
 import React, {Component} from 'react'
-import {View, ScrollView, Text} from 'react-native'
-import {List, ListItem} from 'react-native-elements'
+import {View, Text} from 'react-native'
 import ParallaxScrollView from 'react-native-parallax-scroll-view'
 import Pie from 'react-native-pie'
-import {Card} from 'react-native-elements'
-
-
-const historyListMock = [
-    {
-        name : "Bike 1"
-    },
-    {
-        name : "Bike 2"
-    }
-]
-
-const CardText = ({title, content}) => (
-    <View style = {{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style = {{color: "gray"}}> {title} </Text>
-        <Text style = {{color: "gray"}}> {content}</Text>
-    </View>
-)
-
-
+import {CardHistory} from "../Components/";
 
 export default class HistoryPage extends Component {
     render(){

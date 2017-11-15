@@ -7,6 +7,10 @@ class TokenStore {
     @observable isLogin
     @observable user
 
+    constructor(){
+        this.isLogin = this.isValidAccess()
+    }
+
     isValidAccess(){
         localStorage.getItem(TOKEN_KEY) === undefined? (false) : (true)
     }

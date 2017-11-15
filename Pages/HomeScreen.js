@@ -2,52 +2,11 @@ import React from 'react'
 import MapView from 'react-native-maps';
 import { Text, View, StyleSheet, Switch } from 'react-native';
 import { Icon } from 'react-native-elements'
-import {MapSetting} from './'
+import { MapSetting } from './'
+import { observer } from 'mobx-react'
 
 
-const viewStyle = StyleSheet.create({
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  map: {
-    position: 'absolute',
-    top: 0, 
-    left: 0, 
-    right: 0,
-    bottom: 0,
-  },
-  switch: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderRadius: 40,
-    borderColor : "lightgray",
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    shadowColor: 'black',
-    shadowRadius: 10,
-    position: 'absolute',
-    zIndex: 10,
-    right: 16,
-    top: 16
-  }
-})
-
-const markerList = [
-  {
-    latlng: {
-      latitude: 13.729869,
-      longitude: 100.775333
-    },
-    title: "ShubU test",
-    description: "This is the test description"
-  }
-]
-
+@observer
 export default class HomeScreen extends React.Component {
 
   constructor(props){
@@ -60,15 +19,16 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
+    const { bikeList } = this.props.store
     return (
       <View style={viewStyle.slide1}>
         <MapSetting 
-          toggleSwitch = {this.state.isActiveBike} 
-          onSwitchChange = {() => this.setState({isActiveBike : !this.state.isActiveBike})} 
-          active = {this.state.modalVisible} 
-          action = {()=> this.setState({modalVisible : !this.state.modalVisible})}
-          selectedBike = {this.state.selectedBike} 
-          onSelectedChange = {(bike) => this.setState({selectedBike : bike})}/>
+          toggleSwitch = { this.state.isActiveBike }
+          onSwitchChange = { () => this.setState({isActiveBike : !this.state.isActiveBike}) }
+          active = { this.state.modalVisible }
+          action = { ()=> this.setState({modalVisible : !this.state.modalVisible}) }
+          selectedBike = { this.state.selectedBike }
+          onSelectedChange = { (bike) => this.setState({selectedBike : bike}) }/>
         <View style={viewStyle.switch}>
           <Icon onPress={() => this.setState({modalVisible : true})} name="filter-list" color="gray" />
         </View>
@@ -81,7 +41,7 @@ export default class HomeScreen extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
-          {markerList.map((marker, index) => (
+          {bikeList.map((marker, index) => (
             <MapView.Marker
               key={index}
               coordinate={marker.latlng}
@@ -94,3 +54,36 @@ export default class HomeScreen extends React.Component {
     )
   }
 }
+
+
+const viewStyle = StyleSheet.create({
+    slide1: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#9DD6EB',
+    },
+    map: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    },
+    switch: {
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderRadius: 40,
+        borderColor : "lightgray",
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
+        shadowColor: 'black',
+        shadowRadius: 10,
+        position: 'absolute',
+        zIndex: 10,
+        right: 16,
+        top: 16
+    }
+})

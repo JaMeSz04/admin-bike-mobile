@@ -2,6 +2,9 @@ import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { ChatMenu, ContactScreen } from '../Pages'
 
+
+
+//not using right now
 const Color = {
   old : {
     light : "#00BF9A",

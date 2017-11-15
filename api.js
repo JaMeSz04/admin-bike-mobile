@@ -1,14 +1,24 @@
 import {create} from "apisauce";
 
-const BASE = "139.59.126.228:8080"
+const BASE = {
+    dev : "139.59.126.228:8080",
+    release : "161.246.94.246:1995"
+}
+
+
 
 const url = {
-    base : "http://" + BASE + "/api",
-    socket : "ws://" + BASE,
+    base : "http://" + BASE.dev + "/api",
+    socket : "ws://" + BASE.dev,
     endpoint : {
-        signin      : "/accounts/login",
-        signout     : "/accounts/logout",
-        bikes : "/bikes/list"
+        signin      : "/accounts/login/",
+        signout     : "/accounts/logout/",
+        bikes : "/bikes/list/all",
+        chats : "/bikes/chats/",
+        history : {
+            all: "/bikes/history/all",
+            bike: "/bikes/history"
+        }
     }
 }
 
@@ -22,6 +32,9 @@ const api = create({
 export default service = {
     websocket : url.socket,
 
+    addToken(token){
+        api.setHeader("Authorization", token)
+    },
     login( username , password ){
         return api.post( url.endpoint.signin , { username, password } )
     },
@@ -31,8 +44,15 @@ export default service = {
     getListBikes(){
         return api.get( endpoint.bikes )
     },
-
-
+    getChatRooms(){
+        return api.get( endpoint.chats )
+    },
+    getHistories(){
+        return api.get( endpoint.history.all )
+    },
+    getBikeHistory( bikeID ){
+        return api.get( endpoint.history.bike )
+    }
 
 }
 

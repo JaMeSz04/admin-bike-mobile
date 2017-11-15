@@ -1,7 +1,6 @@
 import {observable, action} from 'mobx'
 import service from '../api'
 
-
 // [
 //     {
 //         _id: 1,
@@ -15,32 +14,49 @@ import service from '../api'
 //     },
 // ]
 
-
+const dump = [
+    {
+        room_id : 5,
+        user : { },
+        unread_message : { },
+        admin : [ ]
+    }
+]
 class MessengerStore {
 
     @observable isConnected = false
-    @observable chatLog = []
+    @observable chatLog = [] //list of messages
+    @observable chatRooms = [] //list of chat rooms
+    @observable loading = false
     connection = null
 
-    onCloseConnection(){
+    @action getRooms(){
+        this.loading = true
+        service.getChatRooms().then( response => {
+            this.chatRooms = response.data
+            this.loading = false
+        })
+    }
+
+    @action onCloseConnection(){
         this.isConnected = false
         this.chatLog = []
         this.connection = null
     }
 
-    initConnection( room ){
-        this.connection = new WebSocket(service.websocket)
+    @action initConnection( roomId ){
+        this.connection = new WebSocket(service.websocket + '/' + roomId)
         this.connection.onopen( () => this.isConnected = true )
         this.connection.onmessage( event => this.onReceive(event.data) )
         this.connection.onerror( error => alert("Unexpected error! " + error) )
         this.connection.onclose( event => this.onCloseConnection() )
     }
 
-    onSend( message ){
+    @action onSend( message ){
         this.connection.send( message )
     }
 
-    onReceive( message ){
+    @action onReceive( message ){
         this.connection.push( message )
     }
 
@@ -48,5 +64,7 @@ class MessengerStore {
         this.connection.close()
     }
 
-
 }
+
+const MessengerStore = new MessengerStore()
+export default MessengerStore
