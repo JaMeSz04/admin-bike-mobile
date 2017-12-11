@@ -5,27 +5,14 @@ import AuthenPage from '../Pages/AuthenPage'
 import {HomeScreen, ChatPanel, MapSetting, Profile, HistoryPage, ContactScreen, ChatMenu} from '../Pages'
 import {Icon} from 'react-native-elements'
 import {Platform, StatusBar} from 'react-native'
+import {BikeStore, MessengerStore} from "../Stores"
 
-const Routes = StackNavigator({
+
+const PlainRoute = StackNavigator({
     Main: {
         screen: TabNavigator({
             Communication: {
-                screen: ChatMenu,
-                navigationOptions: {
-                    headerStyle: {
-                        backgroundColor: "#009688",
-                        shadowColor: 'transparent',
-                    },
-                    headerTitle: "Chats",
-                    headerTitleStyle: {
-                        color: 'white'
-                    },
-                    headerLeft: null,
-                    tabBarLabel: ({focus, tintColor}) => (
-                        <Icon color={tintColor} name='question-answer'/>
-                    ),
-
-                }
+                screen: ChatMenu
             },
             History: {
                 screen: HistoryPage,
@@ -135,5 +122,7 @@ const Routes = StackNavigator({
         paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
     }
 });
+
+const Routes = <PlainRoute messagerStore = {MessengerStore} bikeStore = {BikeStore} />
 
 export default Routes

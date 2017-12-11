@@ -1,7 +1,6 @@
 import React from 'react'
 import ActionButton from 'react-native-action-button'
-import { Text, View, StyleSheet } from 'react-native';
-
+import { View, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     
@@ -14,8 +13,8 @@ const styles = StyleSheet.create({
     actionButtonBackdrop: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.75)',
-    },
-});
+    }
+})
 
 export default class ActionsMenu extends React.Component {
     render(){

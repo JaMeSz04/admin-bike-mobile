@@ -28,7 +28,6 @@ export default class AuthenPage extends Component {
                         underlineColorAndroid='transparent'
                         placeholderTextColor= "gray"
                         autoCapitalize='none'
-
                         returnKeyType='next'
                         placeholder='example@kmitl.ac.th'/>
                     <FormInput
